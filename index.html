@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VIC Mobile Speed Camera Sites</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <div id="sidebar">
+    <header>
+      <div class="eyebrow"><span class="dot"></span>VIC &middot; ROAD SAFETY CAMERA PROGRAM</div>
+      <h1>Mobile Camera Sites</h1>
+      <div class="sub">Approved mobile speed camera locations across Victoria, July 2026 dataset. Positioned at suburb level &mdash; not exact street coordinates.</div>
+    </header>
+    <div class="controls">
+      <div class="search-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input id="search" type="text" placeholder="Search street or suburb…" autocomplete="off">
+      </div>
+      <div class="code-row" id="codeRow"></div>
+      <div class="stat-row">
+        <span>SHOWING</span>
+        <b id="countLabel">0 / 0</b>
+      </div>
+    </div>
+    <div id="list"></div>
+    <footer class="note">
+      Suburb-centroid geocoding via public postcode/locality data; street-level position not published in the source file. <span id="unmatchedCount"></span> sites had no suburb match and are omitted from the map — <button id="showUnmatched">view list</button>. Reason codes reproduced as published; no official legend for A–D was found in public sources.
+    </footer>
+  </div>
+  <div id="map"></div>
+</div>
+
+<div id="modal-overlay">
+  <div id="modal">
+    <h3>Unmatched sites</h3>
+    <p>These locations reference a suburb name not found in the public locality dataset used for geocoding (often very small rural localities), so they can't be placed on the map.</p>
+    <ul id="unmatchedList"></ul>
+    <button onclick="document.getElementById('modal-overlay').classList.remove('show')">Close</button>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
